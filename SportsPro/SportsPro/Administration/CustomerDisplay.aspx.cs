@@ -36,21 +36,26 @@ namespace SportsPro {
 
         private Customer CustomerFromTableRow(DataRowView row) {
             Customer c = new Customer();
-            c.ID = (int)row["CustomerID"];
+            //c.ID = (int)row["CustomerID"];
+            c.CustomerID = (int)row["CustomerID"];
             c.Name = row["Name"].ToString();
             c.Address = row["Address"].ToString();
             c.City = row["City"].ToString();
             c.State = row["State"].ToString();
-            c.PostalCode = row["ZipCode"].ToString();
-            c.PhoneNumber = row["Phone"].ToString();
+            //c.PostalCode = row["ZipCode"].ToString();
+            c.ZipCode = row["ZipCode"].ToString();
+            //c.PhoneNumber = row["Phone"].ToString();
+            c.Phone = row["Phone"].ToString();
             c.Email = row["Email"].ToString();
             return c;
         }
 
         private void DisplayCustomerInfo(Customer c) {
-            string address = $"{c.Address}<br />{c.City}, {c.State} {c.PostalCode}";
+            //string address = $"{c.Address}<br />{c.City}, {c.State} {c.PostalCode}";
+            string address = $"{c.Address}<br />{c.City}, {c.State} {c.ZipCode}";
             lblAddress.Text = address;
-            lblPhone.Text = c.PhoneNumber;
+            //lblPhone.Text = c.PhoneNumber;
+            lblPhone.Text = c.Phone;
             lblEmail.Text = c.Email;
         }
 
