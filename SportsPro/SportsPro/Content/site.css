@@ -1,0 +1,51 @@
+﻿/*** Bootstrap overrides ***/
+.container {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.jumbotron {
+    background-size: 100% 100%;
+    margin-top: 1em;
+}
+
+.btn { 
+    margin-bottom: 1em;
+}
+
+label {
+    font-weight: normal;
+}
+
+#lstContacts { 
+    min-height: 8em;
+}
+
+input[type=checkbox], input[type=radio] {
+    margin: 0 0.5em 0 2em;
+}
+
+
+.pagerStyle a, .pagerStyle span {
+    margin-left: 1em;
+}
+
+.listViewHdrFtr {
+    background-color:black;
+    color:white;
+    font-weight:bold;
+}
+
+.listViewPagerLinks {
+    margin-left: 1em;
+    color:white;
+    font-weight:bold;
+}
+
+.listViewAltItem {
+    background-color:gainsboro; padding:1em;
+}
+
+.listViewItem {
+    background-color:white; padding:1em;
+}
