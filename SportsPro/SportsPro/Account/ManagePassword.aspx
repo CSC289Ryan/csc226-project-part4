@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Manage Password" Language="C#" MasterPageFile="~/SportsMaster.Master" AutoEventWireup="true" CodeBehind="ManagePassword.aspx.cs" Inherits="SportsPro.Account.ManagePassword" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="mainPlaceholder" runat="server">
     <h2><%: Title %>.</h2>
     <div class="form-horizontal">
         <section id="passwordForm">
