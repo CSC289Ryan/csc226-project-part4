@@ -26,12 +26,29 @@ namespace SportsPro {
         //     int startRowIndex
         //     out int totalRowCount
         //     string sortByExpression
-        public IQueryable<Incident> grdIncidents_GetData([Control] string ddlCustomer) {
+        public IQueryable<Incident> grdIncidents_GetData([Control] string ddlCustomers) {
             TechSupportEntities db = new TechSupportEntities();
-            if (ddlCustomer == null) ddlCustomer = db.Customers.FirstOrDefault().CustomerID.ToString();
+            if (ddlCustomers == null)
+                ddlCustomers = db.Customers.FirstOrDefault().CustomerID.ToString();
             return from i in db.Incidents
-                   where i.CustomerID.ToString() == ddlCustomer
+                   where i.CustomerID.ToString() == ddlCustomers
                    select i;
+        }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void grdIncidents_UpdateItem(int id) {
+            SportsPro.Models.Incident item = null;
+            // Load the item here, e.g. item = MyDataLayer.Find(id);
+            if (item == null) {
+                // The item wasn't found
+                ModelState.AddModelError("", String.Format("Item with id {0} was not found", id));
+                return;
+            }
+            TryUpdateModel(item);
+            if (ModelState.IsValid) {
+                // Save changes here, e.g. MyDataLayer.SaveChanges();
+
+            }
         }
     }
 }

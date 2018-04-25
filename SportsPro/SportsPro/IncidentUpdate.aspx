@@ -15,52 +15,43 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-xs-12 col-sm-offset-1 col-sm-10">
+            <div class="col-xs-12 ">
                 <asp:GridView ID="grdIncidents" runat="server"
-                    AutoGenerateColumns="false" DataKeyNames="CustomerID"
+                    AutoGenerateColumns="False" DataKeyNames="IncidentID"
                     ItemType="SportsPro.Models.Incident"
-                    SelectMethod="grdIncidents_GetData">
-
+                    SelectMethod="grdIncidents_GetData"
+                    UpdateMethod="grdIncidents_UpdateItem">
+                    <HeaderStyle BackColor="Black" ForeColor="White" Font-Bold="true" />
+                    <Columns>
+                        <asp:BoundField DataField="IncidentID" HeaderText="ID" ReadOnly="true">
+                            <ItemStyle CssClass="col-xs-1" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="ProductCode" HeaderText="Product Code" ReadOnly="true">
+                            <ItemStyle CssClass="col-xs-1" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="DateOpened" HeaderText="Date Opened" ReadOnly="true">
+                            <ItemStyle CssClass="col-xs-1" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="DateClosed" HeaderText="Date Closed" ReadOnly="false">
+                            <ItemStyle CssClass="col-xs-1" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="true">
+                            <ItemStyle CssClass="col-xs-2" />
+                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="Description">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Description") %>' Rows="4" MaxLength="2000" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle CssClass="col-xs-5" />
+                        </asp:TemplateField>
+                        <asp:CommandField ShowEditButton="true">
+                            <ItemStyle CssClass="col-xs-1" />
+                        </asp:CommandField>
+                    </Columns>
                 </asp:GridView>
-                <%-- 
-                <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource2"
-                    DataKeyField="CustomerID" CssClass="table table-bordered table-condensed table-striped" OnPreRender="DataList1_PreRender">
-                    <HeaderTemplate>
-                        <span class="col-xs-5 col-sm-4">Product/Incident</span>
-                        <span class="col-xs-3 col-sm-4">Tech Name</span>
-                        <span class="col-xs-2">Opened</span>
-                        <span class="col-xs-2">Closed</span>
-                    </HeaderTemplate>
-                    <HeaderStyle BackColor="Black" Font-Bold="true" ForeColor="White"/>
-                    <ItemTemplate>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Expr3") %>' CssClass="col-xs-5 col-sm-4"></asp:Label>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Eval("Name") %>' CssClass="col-xs-3 col-sm-4"></asp:Label>
-                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("DateOpened", "{0:d}") %>' CssClass="col-xs-2"></asp:Label>
-                                <asp:Label ID="Label5" runat="server" Text='<%# Eval("DateClosed", "{0:d}") %>' CssClass="col-xs-2"></asp:Label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <asp:Label ID="Label6" runat="server" Text='<%# Eval("Description") %>' CssClass="col-xs-12"></asp:Label>
-                            </div>
-                        </div>
-                    </ItemTemplate>
-                </asp:DataList>
-                <asp:Label ID="lblNoData" runat="server" Text="No incidents for this customer."
-                    Visible="false" CssClass="col-xs-12"></asp:Label>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server"
-                    ConnectionString='<%$ ConnectionStrings:ConnectionString %>'
-                    SelectCommand="SELECT [CustomerID], [Name] FROM [Customers] ORDER BY [Name]"></asp:SqlDataSource>
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server"
-                    ConnectionString='<%$ ConnectionStrings:ConnectionString %>'
-                    SelectCommand="SELECT I.IncidentID, I.CustomerID, I.ProductCode, I.TechID, I.DateOpened, I.DateClosed, I.Title, I.Description, T.TechID AS Expr1, T.Name, T.Email, T.Phone, P.ProductCode AS Expr2, P.Name AS Expr3, P.Version, P.ReleaseDate FROM Incidents AS I LEFT JOIN Technicians AS T ON I.TechID = T.TechID LEFT JOIN Products AS P ON I.ProductCode = P.ProductCode WHERE (I.CustomerID = @CustomerID)">
-                    <SelectParameters>
-                        <asp:ControlParameter ControlID="DropDownList1" PropertyName="SelectedValue" Name="CustomerID"></asp:ControlParameter>
-                    </SelectParameters>
-                </asp:SqlDataSource>
-        --%>
             </div>
         </div>
     </div>
