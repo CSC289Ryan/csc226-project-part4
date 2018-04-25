@@ -20,7 +20,7 @@
                     AutoGenerateColumns="False" DataKeyNames="IncidentID"
                     ItemType="SportsPro.Models.Incident"
                     SelectMethod="grdIncidents_GetData"
-                    UpdateMethod="grdIncidents_UpdateItem">
+                    UpdateMethod="grdIncidents_UpdateItem" OnPreRender="grdIncidents_PreRender">
                     <HeaderStyle BackColor="Black" ForeColor="White" Font-Bold="true" />
                     <Columns>
                         <asp:BoundField DataField="IncidentID" HeaderText="ID" ReadOnly="true">
@@ -52,6 +52,8 @@
                         </asp:CommandField>
                     </Columns>
                 </asp:GridView>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowModelStateErrors="true"
+                    CssClass="text-danger"/>
             </div>
         </div>
     </div>

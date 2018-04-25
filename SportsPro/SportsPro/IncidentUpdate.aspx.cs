@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SportsPro.Models;
 using System.Web.ModelBinding;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 
 namespace SportsPro {
     public partial class IncidentUpdate : System.Web.UI.Page {
@@ -36,19 +38,54 @@ namespace SportsPro {
         }
 
         // The id parameter name should match the DataKeyNames value set on the control
-        public void grdIncidents_UpdateItem(int id) {
-            SportsPro.Models.Incident item = null;
+        public void grdIncidents_UpdateItem(int IncidentID) {
+            Incident item = null;
             // Load the item here, e.g. item = MyDataLayer.Find(id);
+            TechSupportEntities db = new TechSupportEntities();
+            item = db.Incidents.Find(IncidentID);
             if (item == null) {
                 // The item wasn't found
-                ModelState.AddModelError("", String.Format("Item with id {0} was not found", id));
+                ModelState.AddModelError("", String.Format("Item with id {0} was not found", IncidentID));
                 return;
             }
             TryUpdateModel(item);
             if (ModelState.IsValid) {
                 // Save changes here, e.g. MyDataLayer.SaveChanges();
-
+                try {
+                    db.SaveChanges();
+                    grdIncidents.DataBind();
+                }
+                catch (DbUpdateConcurrencyException ex) { HandleConcurrencyError(ex); }
+                catch (DbEntityValidationException ex) { HandleValidationError(ex); }
+                catch (Exception ex) { HandleOtherErrors(ex); }
             }
+        }
+
+        private void HandleConcurrencyError(DbUpdateConcurrencyException ex) {
+            ex.Entries.Single().Reload();
+            ModelState.AddModelError("", "Another user changed or deleted that incident.");
+        }
+
+        private void HandleValidationError(DbEntityValidationException ex) {
+            foreach (var ve in ex.EntityValidationErrors) {
+                foreach (var e in ve.ValidationErrors) {
+                    ModelState.AddModelError("", $"Error: {e.ErrorMessage}");
+                }
+            }
+        }
+
+        private void HandleOtherErrors(Exception ex) {
+            // Get innermost, relevant exception
+            while (ex.InnerException != null) {
+                ex = ex.InnerException;
+            }
+            ModelState.AddModelError("", $"Error: {ex.Message}");
+        }
+
+        protected void grdIncidents_PreRender(object sender, EventArgs e) {
+            // For proper Bootstrap formatting
+            if (grdIncidents.HeaderRow != null)
+                grdIncidents.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
     }
 }
