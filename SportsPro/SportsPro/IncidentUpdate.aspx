@@ -16,6 +16,12 @@
         </div>
         <div class="form-group">
             <div class="col-xs-12 col-sm-offset-1 col-sm-10">
+                <asp:GridView ID="grdIncidents" runat="server"
+                    AutoGenerateColumns="false" DataKeyNames="CustomerID"
+                    ItemType="SportsPro.Models.Incident"
+                    SelectMethod="grdIncidents_GetData">
+
+                </asp:GridView>
                 <%-- 
                 <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource2"
                     DataKeyField="CustomerID" CssClass="table table-bordered table-condensed table-striped" OnPreRender="DataList1_PreRender">
