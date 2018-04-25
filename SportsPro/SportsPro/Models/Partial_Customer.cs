@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SportsPro.Models {
     public partial class Customer {
-        /*
+        /*  Properties commented out in favor of Entity Framework Data model
         public int ID { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }

@@ -7,9 +7,11 @@
             <asp:Label ID="Label1" runat="server" Text="Select a customer:"
                 CssClass="col-xs-4 col-sm-offset-1 col-sm-2 control-label"></asp:Label>
             <div class="col-xs-6 col-sm-4">
-                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1"
-                DataTextField="Name" DataValueField="CustomerID" AutoPostBack="true"
-                CssClass="form-control"></asp:DropDownList>
+                <asp:DropDownList ID="ddlCustomers" runat="server" 
+                    ItemType="SportsPro.Models.Customer"
+                    SelectMethod="ddlCustomers_GetData"
+                    DataTextField="Name" DataValueField="CustomerID" AutoPostBack="true"
+                    CssClass="form-control"></asp:DropDownList>
             </div>
         </div>
         <div class="form-group">
@@ -40,7 +42,6 @@
                         </div>
                     </ItemTemplate>
                 </asp:DataList>
-        --%>
                 <asp:Label ID="lblNoData" runat="server" Text="No incidents for this customer."
                     Visible="false" CssClass="col-xs-12"></asp:Label>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server"
@@ -53,6 +54,7 @@
                         <asp:ControlParameter ControlID="DropDownList1" PropertyName="SelectedValue" Name="CustomerID"></asp:ControlParameter>
                     </SelectParameters>
                 </asp:SqlDataSource>
+        --%>
             </div>
         </div>
     </div>

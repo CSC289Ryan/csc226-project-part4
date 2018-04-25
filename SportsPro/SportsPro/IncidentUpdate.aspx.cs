@@ -10,5 +10,9 @@ namespace SportsPro {
         protected void Page_Load(object sender, EventArgs e) {
 
         }
+
+        public IQueryable<SportsPro.Models.Customer> ddlCustomers_GetData() {
+            return null;
+        }
     }
 }
