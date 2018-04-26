@@ -49,7 +49,10 @@ namespace SportsPro.Administration {
                 } catch (Exception ex) {
                     string errorMsg = DatabaseErrorMessage(ex.Message);
                     lblAddError.Text = errorMsg;
-                    // TODO: Redirect to ErrorMessage page passing errorMsg
+
+                    Session["ErrorMessage"] = errorMsg;
+                    Session["ReturnUrl"] = Request.Url.ToString();
+                    Response.Redirect("~/ErrorMessage");
                 }
             }
         }

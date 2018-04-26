@@ -11,7 +11,7 @@
                 <asp:Label ID="lblErrorMsg" runat="server" Text="DUMMY" CssClass="text-danger"></asp:Label>
             </div>
             <div class="form-group">
-                <asp:Button ID="btnReturn" runat="server" Text="Return" CssClass="btn btn-primary col-xs-2"/>
+                <asp:Button ID="btnReturn" runat="server" Text="Return" CssClass="btn btn-primary col-xs-2" OnClick="btnReturn_Click"/>
             </div>
         </div>
     </div>
