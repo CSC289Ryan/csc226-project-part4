@@ -1,5 +1,67 @@
-﻿<%@ Page Title="Project 2-C: Site Navigation" Language="C#" MasterPageFile="~/SportsMaster.Master" AutoEventWireup="true" CodeBehind="ProductRegistration.aspx.cs" Inherits="SportsPro.ProductRegistration" %>
+﻿<%@ Page Title="4-B: Register Products" Language="C#" MasterPageFile="~/SportsMaster.Master" AutoEventWireup="true" CodeBehind="ProductRegistration.aspx.cs" Inherits="SportsPro.ProductRegistration" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headPlaceholder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainPlaceholder" runat="server">
+    <div class="container">
+        <div class="form-group">
+            <div class="col-xs-2 col-sm-offset-1">
+                <asp:Label ID="lblCustomerID" runat="server" Text="Enter your customer ID:" CssClass="form-control-static"></asp:Label>
+            </div>
+            <div class="col-xs-2">
+                <asp:TextBox ID="txtCustomerID" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="col-xs-2">
+                <asp:Button ID="btnGetCustomer" runat="server" Text="Get Customer" CssClass="btn btn-primary"
+                    OnClick="btnGetCustomer_Click"
+                    CausesValidation="true" ValidationGroup="GetID"/>
+                <asp:RequiredFieldValidator ID="rfvCustomerID" runat="server"
+                    ControlToValidate="txtCustomerID"
+                    ErrorMessage="Customer ID is required"
+                    Text="*" CssClass="text-danger"
+                    ValidationGroup="GetID"></asp:RequiredFieldValidator>
+                <asp:CompareValidator ID="cmpCustomerID" runat="server"
+                    ControlToValidate="txtCustomerID"
+                    Operator="DataTypeCheck" Type="Integer"
+                    ErrorMessage="Enter a positive integer ID"
+                    Text="*" CssClass="text-danger"
+                    ValidationGroup="GetID"></asp:CompareValidator>
+                <asp:CustomValidator ID="cstmCustomerID" runat="server"
+                    ControlToValidate="txtCustomerID"
+                    ErrorMessage="No customer found for that ID"
+                    Text="*" CssClass="text-danger"
+                    Display="None"
+                    OnServerValidate="cstmCustomerID_ServerValidate"
+                    ValidationGroup="GetID"></asp:CustomValidator>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 col-sm-offset-1">
+                <asp:Label ID="lblCustomer" runat="server" Text="Customer:"></asp:Label>
+            </div>
+            <div class="col-xs-4">
+                <asp:Label ID="lblName" runat="server" Text=""></asp:Label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 col-sm-offset-1">
+                <asp:Label ID="lblProduct" runat="server" Text="Product:"></asp:Label>
+            </div>
+            <div class="col-xs-4">
+                <asp:DropDownList ID="ddlProducts" runat="server"
+                    CssClass="form-control" Enabled="false"></asp:DropDownList>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-2 col-sm-offset-1">
+                <asp:Button ID="btnRegisterProduct" runat="server" Text="Register Product"
+                    CssClass="btn btn-primary" Enabled="false"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 col-sm-offset-1">
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server"
+                    ValidationGroup="GetID" CssClass="text-danger" ShowSummary="true"/>
+            </div>
+        </div>
+    </div>
 </asp:Content>
