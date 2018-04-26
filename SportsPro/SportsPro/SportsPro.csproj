@@ -258,6 +258,7 @@
     <Content Include="CustomerIncidentDisplay.aspx" />
     <Content Include="CustomerSurvey.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="ErrorMessage.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="IncidentUpdate.aspx" />
@@ -550,6 +551,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorMessage.aspx.cs">
+      <DependentUpon>ErrorMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorMessage.aspx.designer.cs">
+      <DependentUpon>ErrorMessage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
