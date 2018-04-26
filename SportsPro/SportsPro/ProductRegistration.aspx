@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-xs-12 col-sm-offset-1">
+            <div class="col-xs-12 col-sm-offset-1 col-sm-10">
                 <asp:Label ID="lblError" runat="server" Text="" CssClass="text-danger"></asp:Label>
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server"
                     ValidationGroup="GetID" CssClass="text-danger"/>

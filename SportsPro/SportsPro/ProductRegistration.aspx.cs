@@ -52,7 +52,7 @@ namespace SportsPro {
         }
 
         protected void btnRegisterProduct_Click(object sender, EventArgs e) {
-            if (IsValid) {
+            if (IsValid && ddlProducts.SelectedIndex > -1) {
                 var parameters = SqlDataSource2.InsertParameters;
                 parameters["CustomerID"].DefaultValue = selected.CustomerID.ToString();
                 parameters["ProductCode"].DefaultValue = ddlProducts.SelectedValue;
