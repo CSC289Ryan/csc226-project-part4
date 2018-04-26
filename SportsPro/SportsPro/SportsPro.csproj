@@ -258,8 +258,11 @@
     <Content Include="CustomerIncidentDisplay.aspx" />
     <Content Include="CustomerSurvey.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="ErrorMessage.aspx" />
+    <Content Include="FileNotFound.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="HttpError.aspx" />
     <Content Include="IncidentUpdate.aspx" />
     <Content Include="Models\SportsProModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -271,6 +274,7 @@
       <DependentUpon>SportsProModel.edmx</DependentUpon>
       <LastGenOutput>SportsProModel.cs</LastGenOutput>
     </Content>
+    <Content Include="NoAccess.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -551,8 +555,29 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ErrorMessage.aspx.cs">
+      <DependentUpon>ErrorMessage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorMessage.aspx.designer.cs">
+      <DependentUpon>ErrorMessage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FileNotFound.aspx.cs">
+      <DependentUpon>FileNotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FileNotFound.aspx.designer.cs">
+      <DependentUpon>FileNotFound.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HttpError.aspx.cs">
+      <DependentUpon>HttpError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HttpError.aspx.designer.cs">
+      <DependentUpon>HttpError.aspx</DependentUpon>
     </Compile>
     <Compile Include="IncidentUpdate.aspx.cs">
       <DependentUpon>IncidentUpdate.aspx</DependentUpon>
@@ -595,6 +620,13 @@
     <Compile Include="Models\Survey.cs" />
     <Compile Include="Models\TechnicianDB.cs" />
     <Compile Include="Models\TechSupportDB.cs" />
+    <Compile Include="NoAccess.aspx.cs">
+      <DependentUpon>NoAccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoAccess.aspx.designer.cs">
+      <DependentUpon>NoAccess.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProductRegistration.aspx.cs">
       <DependentUpon>ProductRegistration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

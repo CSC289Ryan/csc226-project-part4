@@ -64,8 +64,13 @@ namespace SportsPro {
                     txtCustomerID.Text = "";
                 }
                 catch (Exception ex) {
-                    lblError.Text = "A database error has occurred. " +
+                    string errorMsg = "A database error has occurred. " +
                         "Message: " + ex.Message;
+                    lblError.Text = errorMsg;
+
+                    Session["ErrorMessage"] = errorMsg;
+                    Session["ReturnUrl"] = Request.Url.ToString();
+                    Response.Redirect("~/ErrorMessage");
                 }
             }
         }
