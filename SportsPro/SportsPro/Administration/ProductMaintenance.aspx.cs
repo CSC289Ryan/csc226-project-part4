@@ -47,7 +47,9 @@ namespace SportsPro.Administration {
                     txtVersion.Text = "";
                     txtReleaseDate.Text = "mm/dd/yy";
                 } catch (Exception ex) {
-                    lblAddError.Text = DatabaseErrorMessage(ex.Message);
+                    string errorMsg = DatabaseErrorMessage(ex.Message);
+                    lblAddError.Text = errorMsg;
+                    // TODO: Redirect to ErrorMessage page passing errorMsg
                 }
             }
         }
