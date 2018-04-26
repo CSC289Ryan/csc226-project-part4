@@ -47,13 +47,17 @@
             </div>
             <div class="col-xs-4">
                 <asp:DropDownList ID="ddlProducts" runat="server"
-                    CssClass="form-control" Enabled="false"></asp:DropDownList>
+                    CssClass="form-control" Enabled="false" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="ProductCode">
+                </asp:DropDownList>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+                    ConnectionString='<%$ ConnectionStrings:ConnectionString %>'
+                    SelectCommand="SELECT * FROM [Products] ORDER BY [Name]"></asp:SqlDataSource>
             </div>
         </div>
         <div class="form-group">
             <div class="col-xs-2 col-sm-offset-1">
                 <asp:Button ID="btnRegisterProduct" runat="server" Text="Register Product"
-                    CssClass="btn btn-primary" Enabled="false"/>
+                    CssClass="btn btn-primary" Enabled="false" OnClick="btnRegisterProduct_Click"/>
             </div>
         </div>
         <div class="form-group">
