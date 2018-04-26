@@ -13,12 +13,12 @@ namespace SportsPro {
         }
 
         protected void btnGetCustomer_Click(object sender, EventArgs e) {
+            if (!Page.IsValid) return;
             int customerID = int.Parse(txtCustomerID.Text);
             SetupPageForCustomer(customerID);
         }
 
         private void SetupPageForCustomer(int customerID) {
-            if (!IsValid) return;
             TechSupportEntities db = new TechSupportEntities();
             Customer c = db.Customers.Find(customerID);
             if (c == null) {
@@ -37,8 +37,8 @@ namespace SportsPro {
         protected void cstmCustomerID_ServerValidate(object source, ServerValidateEventArgs args) {
             TechSupportEntities db = new TechSupportEntities();
             Customer c = db.Customers.Find(int.Parse(args.Value));
-            cstmCustomerID.IsValid = (c == null) ? false : true;
-            if (!cstmCustomerID.IsValid) {
+            args.IsValid = (c == null) ? false : true;
+            if (!args.IsValid) {
                 ResetProductControls();
             }
         }

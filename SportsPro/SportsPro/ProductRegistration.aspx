@@ -29,7 +29,6 @@
                     ControlToValidate="txtCustomerID"
                     ErrorMessage="No customer found for that ID"
                     Text="*" CssClass="text-danger"
-                    Display="None"
                     OnServerValidate="cstmCustomerID_ServerValidate"
                     ValidationGroup="GetID"></asp:CustomValidator>
             </div>
@@ -60,7 +59,7 @@
         <div class="form-group">
             <div class="col-xs-12 col-sm-offset-1">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server"
-                    ValidationGroup="GetID" CssClass="text-danger" ShowSummary="true"/>
+                    ValidationGroup="GetID" CssClass="text-danger"/>
             </div>
         </div>
     </div>
