@@ -58,10 +58,27 @@
             <div class="col-xs-2 col-sm-offset-1">
                 <asp:Button ID="btnRegisterProduct" runat="server" Text="Register Product"
                     CssClass="btn btn-primary" Enabled="false" OnClick="btnRegisterProduct_Click"/>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' DeleteCommand="DELETE FROM [Registrations] WHERE [CustomerID] = @CustomerID AND [ProductCode] = @ProductCode" InsertCommand="INSERT INTO [Registrations] ([CustomerID], [ProductCode], [RegistrationDate]) VALUES (@CustomerID, @ProductCode, @RegistrationDate)" SelectCommand="SELECT * FROM [Registrations]" UpdateCommand="UPDATE [Registrations] SET [RegistrationDate] = @RegistrationDate WHERE [CustomerID] = @CustomerID AND [ProductCode] = @ProductCode">
+                    <DeleteParameters>
+                        <asp:Parameter Name="CustomerID" Type="Int32"></asp:Parameter>
+                        <asp:Parameter Name="ProductCode" Type="String"></asp:Parameter>
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="CustomerID" Type="Int32"></asp:Parameter>
+                        <asp:Parameter Name="ProductCode" Type="String"></asp:Parameter>
+                        <asp:Parameter Name="RegistrationDate" Type="DateTime"></asp:Parameter>
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="RegistrationDate" Type="DateTime"></asp:Parameter>
+                        <asp:Parameter Name="CustomerID" Type="Int32"></asp:Parameter>
+                        <asp:Parameter Name="ProductCode" Type="String"></asp:Parameter>
+                    </UpdateParameters>
+                </asp:SqlDataSource>
             </div>
         </div>
         <div class="form-group">
             <div class="col-xs-12 col-sm-offset-1">
+                <asp:Label ID="lblError" runat="server" Text="" CssClass="text-danger"></asp:Label>
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server"
                     ValidationGroup="GetID" CssClass="text-danger"/>
             </div>

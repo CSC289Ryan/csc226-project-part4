@@ -46,22 +46,37 @@ namespace SportsPro {
 
         private void ResetProductControls() {
             lblName.Text = "";
+            lblError.Text = "";
             btnRegisterProduct.Enabled = false;
             ddlProducts.Enabled = false;
         }
 
         protected void btnRegisterProduct_Click(object sender, EventArgs e) {
-            // register product and send email
-            SendConfirmationEmail();
+            if (IsValid) {
+                var parameters = SqlDataSource2.InsertParameters;
+                parameters["CustomerID"].DefaultValue = selected.CustomerID.ToString();
+                parameters["ProductCode"].DefaultValue = ddlProducts.SelectedValue;
+                parameters["RegistrationDate"].DefaultValue = DateTime.Now.ToString();
+                try {
+                    SqlDataSource2.Insert();
+                    SendConfirmationEmail(ddlProducts.SelectedItem.Text); // Easy hard-coded email
+                    ResetProductControls();
+                    txtCustomerID.Text = "";
+                }
+                catch (Exception ex) {
+                    lblError.Text = "A database error has occurred. " +
+                        "Message: " + ex.Message;
+                }
+            }
         }
 
-        private void SendConfirmationEmail() {
+        private void SendConfirmationEmail(string product) {
             if (selected == null) { return; }
             MailAddress to = new MailAddress(selected.Email);
             MailMessage msg = new MailMessage();
             msg.To.Add(to);
             msg.Subject = "SportsPro Registration Confirmation";
-            msg.Body = $"Thanks for registering, {selected.Name}.";
+            msg.Body = $"{selected.Name},\n\nThanks for registering '{product}'.";
             SmtpClient client = new SmtpClient();
             client.Send(msg);
         }
